@@ -1,0 +1,30 @@
+body{
+    background-image:url(../images/fon1.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    }
+
+.header {
+	color: white;
+	font-size: 48px;
+	font-style : italic;
+}
+
+.body {color: white;
+	font-size: 28px;
+	font-style : italic;
+	text-decoration: underline ;
+}
+
+.definitions {color: white;
+	font-size: 24px;
+	font-style : italic;
+
+}
+
+.link {color: green;
+	font-size: 20px;
+	font-style : italic;
+	font-weight : bolder;
+}
