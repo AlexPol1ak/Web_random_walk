@@ -2,7 +2,7 @@ from random import choice
 import numpy as np
 
 
-class RandomPoints3D():
+class RandomPoints():
     """Класс для генерирования случайных блужданий в трех измерениях."""
 
     def __init__(self, amount_points=5000):
