@@ -36,3 +36,8 @@ def visual2D(nums=5000):
         shutil.move(pic_name, 'random_walk/static/result_pic')
 
     return pic_name
+
+
+def dual2d(nums1 = 5000, nums2 = 5000):
+    """Визуализация двух блужданий"""
+    pass

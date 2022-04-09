@@ -10,6 +10,7 @@ def start_page(request):
 
 def rw2d(request):
     """Отображение случайного блуждения в 2d"""
+
     us2d = AmountPoints()
     context = {'w2d': us2d}
     if request.method == 'POST':
@@ -17,7 +18,10 @@ def rw2d(request):
         pic_name = visual2D(int(points))
         context['points'] = points
 
-
-
     return render(request, 'rw2d.html', context)
+
+def rwdual2d(request):
+    """Отображение пересечения двух блужданий в 2d"""
+
+    return render(request, 'rwdual2d.html', )
 

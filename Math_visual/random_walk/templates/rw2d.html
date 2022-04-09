@@ -8,14 +8,19 @@
     <title>МТ</title>
 </head>
 <body>
-<form method="POST">
+<button onclick="window.location.href ='/';">Выход</button>
+<p class="definitions"><i>
+            Введите количество случайных точек. Оптимальный вариант - от 5000 до 10000.<br/>
+            Большая зеленая точка отражает начало блуждания, красная- конец.<br/>
+            Оттенок, от тусклого к насыщенному , показывает направление блуждания.
+            </p></i>
+<form method="POST"  enctype="multipart/form-data">
         {% csrf_token %}
     <table>
         {{ w2d }}
     </table>
     <input type="submit" value="Построить" hspace="55" vspace="10">
 </form>
-<a href = '' ><button>Выход</button></a>
 <h4 class="definitions">Количество случайных точек: {{ points }}</h4>
 <img src="{% static 'result_pic/rw_visual2D.png' %}"  >
 </body>

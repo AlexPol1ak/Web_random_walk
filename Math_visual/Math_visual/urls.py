@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('random_walk.urls')),
-    path('2d/', include('random_walk.urls'))
+    path('2d/', include('random_walk.urls')),
+    path('dual2d/', include('random_walk.urls')),
 ]
