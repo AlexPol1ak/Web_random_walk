@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import AmountPoints
-from .utils.visual import visual2D
+from .forms import AmountPoints, AmountPointsDual
+from .utils.visual import visual2D, dual2d
 
 
 def start_page(request):
@@ -22,6 +22,12 @@ def rw2d(request):
 
 def rwdual2d(request):
     """Отображение пересечения двух блужданий в 2d"""
+    us2dual = AmountPointsDual()
+    context = {'w2dual': us2dual}
+    if request.method == 'POST':
+        points = request.POST.get('points')
+        pic_name = dual2d(int(points))
+        context['points'] = points
 
-    return render(request, 'rwdual2d.html', )
 
+    return render(request, 'rwdual2d.html', context )

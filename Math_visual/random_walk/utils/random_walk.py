@@ -1,4 +1,5 @@
 from random import choice
+
 import numpy as np
 
 

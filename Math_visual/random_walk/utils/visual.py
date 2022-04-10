@@ -1,11 +1,12 @@
-import matplotlib.pyplot as plt
 import os
 import shutil
+
+import matplotlib.pyplot as plt
+
 from .random_walk import RandomPoints
 
 
-#static_path = '../static/result_pic'
-
+# static_path = '../static/result_pic'
 
 
 def visual2D(nums=5000):
@@ -38,6 +39,57 @@ def visual2D(nums=5000):
     return pic_name
 
 
-def dual2d(nums1 = 5000, nums2 = 5000):
+def dual2d(nums1=5000):
     """Визуализация двух блужданий"""
-    pass
+    obj1 = RandomPoints(nums1)
+    obj2 = RandomPoints(nums1)
+    obj1.random_walk()
+    obj2.random_walk()
+
+    x1 = obj1.list_value('x')
+    y1 = obj1.list_value('y')
+    x2 = obj2.list_value('x')
+    y2 = obj2.list_value('y')
+
+    plt.style.use('classic')
+    fig, ax = plt.subplots(dpi=90)
+    color1 = range(nums1)
+    color2 = range(nums1)
+
+    # Первое блуждание.
+    ax.scatter(x1, y1, c=color1, cmap=plt.cm.Blues, edgecolors='none', s=10)
+    ax.scatter(0, 0, c='blue', edgecolors='none', s=300)
+    ax.scatter(x1[-1], y1[-1], c='blue', edgecolors='none', s=200)
+
+    # Второе блуждание.
+    ax.scatter(x2, y2, c=color2, cmap=plt.cm.Greens, edgecolors='none', s=10)
+    ax.scatter(0, 0, c='green', edgecolors='none', s=300)
+    ax.scatter(x2[-1], y2[-1], c='green', edgecolors='none', s=200)
+
+    # Проверка и отображение пересечений двух блужданий.
+    intersection_x, intersection_y = [], []
+    i = 0
+    while i < len(x1):
+        if x1[i] in x2 and y1[i] in y2:
+            intersection_x.append(x1[i])
+            intersection_y.append(y1[i])
+        i += 1
+    if len(intersection_x) != 0:
+        ax.scatter(intersection_x, intersection_y, c='yellow', edgecolors='none', s=10, alpha=0.1)
+
+    pic_name = 'rw_dual2D.png'
+    # Cохранение картинки
+    plt.savefig(pic_name, bbox_inches='tight')
+
+    # Инструкция позволяющая переместить в static/result_pic
+    # и перезаписать отрисованную картинку, если она была сохранена ранее
+    try:
+        shutil.move(pic_name, 'random_walk/static/result_pic')
+    except shutil.Error:
+        os.remove('random_walk/static/result_pic' + f'/{pic_name}')
+        shutil.move(pic_name, 'random_walk/static/result_pic')
+
+    return pic_name
+
+
+# dual2d()
