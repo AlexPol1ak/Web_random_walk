@@ -9,3 +9,7 @@ class AmountPointsDual(forms.Form):
 
         points = forms.IntegerField(min_value=1)
 
+class AmountPoints3D(forms.Form):
+    """Количество  точек """
+    points = forms.IntegerField(min_value=1)
+

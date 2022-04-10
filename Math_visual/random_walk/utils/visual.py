@@ -1,10 +1,13 @@
+from .random_walk import RandomPoints
+
 import os
 import shutil
 
 import matplotlib.pyplot as plt
 
-from .random_walk import RandomPoints
-
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from plotly import offline
 
 # static_path = '../static/result_pic'
 
@@ -91,5 +94,34 @@ def dual2d(nums1=5000):
 
     return pic_name
 
+def visual3D(nums = 5000):
+    obj = RandomPoints(nums)
+    obj.random_walk()
 
-# dual2d()
+    x = obj.list_value('x')
+    y = obj.list_value('y')
+    z = obj.list_value('z')
+
+    fig = make_subplots(
+        rows=2, cols=2,
+        specs=[[None, None],
+               [{"type": "scene"}, {"type": "scatter3d"}]], start_cell='bottom-left')
+    fig.add_trace(go.Scatter3d(x=x, y=y,
+                               z=z, mode='lines'),
+                  row=2, col=2)
+
+    fig.update_layout(autosize=True, width=1500, height=1500, showlegend=False, template="plotly_dark", )
+    name = 'rw3Dv.html'
+
+    # paper_bgcolor="darkgray"
+    offline.plot({'data': fig}, filename=name,)
+
+
+    # Инструкция позволяющая переместить в static/result_pic
+    # и перезаписать отрисованную картинку, если она была сохранена ранее
+    # try:
+    #     shutil.move(name, 'random_walk/templates')
+    # except shutil.Error:
+    #     os.remove('random_walk/templates' + f'/{name}')
+    #     shutil.move(name, 'random_walk/templates')
+

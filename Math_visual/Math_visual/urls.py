@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('random_walk.urls')),
     path('2d/', include('random_walk.urls')),
     path('dual2d/', include('random_walk.urls')),
+    path('3d/', include('random_walk.urls')),
 ]
