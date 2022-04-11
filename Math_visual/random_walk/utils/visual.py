@@ -117,11 +117,5 @@ def visual3D(nums = 5000):
     offline.plot({'data': fig}, filename=name,)
 
 
-    # Инструкция позволяющая переместить в static/result_pic
-    # и перезаписать отрисованную картинку, если она была сохранена ранее
-    # try:
-    #     shutil.move(name, 'random_walk/templates')
-    # except shutil.Error:
-    #     os.remove('random_walk/templates' + f'/{name}')
-    #     shutil.move(name, 'random_walk/templates')
+
 

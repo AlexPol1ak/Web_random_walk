@@ -1,5 +1,5 @@
 body{
-    background-image:url(../images/fon1.jpg);
+    background-image:url(../images/fon3.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -29,6 +29,6 @@ body{
 	font-weight : bolder;
 }
 
-.definitionsblue {color: blue;
+.definitions_blue {color: blue;
 	font-size: 24px;
 	font-style : italic;
